@@ -117,10 +117,10 @@ public class Request {
 	 * @param baseline - referencia a ser comparada com a mensagem
 	 * @param casoTeste
 	 */
-	public void validatorBody(Response resp, Object baseline){
+	public void validatorBody(Object baseline){
 		Log.info("Validação do BODY");
 		try {
-			soft.assertTrue(resp.getBody().jsonPath().get().toString().equals(baseline.toString()), "Validação do Body " + "</br><b>Valor atual:</b> " + resp.getBody().jsonPath().get().toString() + "</br><b>Valor esperado:</b> " + baseline.toString());
+			soft.assertTrue(response.getBody().jsonPath().get().toString().equals(baseline.toString()), "Validação do Body " + "</br><b>Valor atual:</b> " + response.getBody().jsonPath().get().toString() + "</br><b>Valor esperado:</b> " + baseline.toString());
 		}catch (Exception e) {
 			soft.assertTrue(false, "Validação do Body");
 		}
@@ -132,14 +132,14 @@ public class Request {
 	 * @param baseline - referencia a ser comparada com a mensagem
 	 * @param casoTeste
 	 */
-	public void validatorBodyEmpty(Response resp, Object baseline) {
+	public void validatorBodyEmpty(Object baseline) {
 		Log.info("Validação do BODY");
 		try {
-			soft.assertTrue(resp.getBody().asString().equals(baseline), "Validação do body vazio: " +  
-		"</br><b>Valor atual:</b> " + resp.getBody().asString().equals(baseline) + "</br><b>Valor esperado:</b> " + baseline);
+			soft.assertTrue(response.getBody().asString().equals(baseline), "Validação do body vazio: " +  
+		"</br><b>Valor atual:</b> " + response.getBody().asString().equals(baseline) + "</br><b>Valor esperado:</b> " + baseline);
 		
 		}catch (Exception e) {
-			soft.assertTrue(false, "Validação de body vazio: " + resp.getBody().asString());
+			soft.assertTrue(false, "Validação de body vazio: " + response.getBody().asString());
 		}
 	}
 
@@ -149,10 +149,10 @@ public class Request {
 	 * @param baseline - referencia a ser comparada com a mensagem
 	 * @param casoTeste
 	 */
-	public void validatorStatusCode(Response resp, Object baseline){
+	public void validatorStatusCode(Object baseline){
 		Log.info("Validação do STATUS CODE: " + Integer.valueOf(baseline.toString()));
 		try {
-			soft.assertTrue(resp.getStatusCode() == Integer.valueOf(baseline.toString()), "Validação do StatusCode " + "</br><b>StatusCode atual:</b> " + resp.getStatusCode() + "</br><b>StatusCode esperado:</b> " + Integer.valueOf(baseline.toString()));
+			soft.assertTrue(response.getStatusCode() == Integer.valueOf(baseline.toString()), "Validação do StatusCode " + "</br><b>StatusCode atual:</b> " + response.getStatusCode() + "</br><b>StatusCode esperado:</b> " + Integer.valueOf(baseline.toString()));
 		}catch (Exception e) {
 			soft.assertTrue(false, "Validação do StatusCode");
 		}
@@ -166,10 +166,10 @@ public class Request {
 	 * @param baseline - campo a ser comparado com o campo da mensagem
 	 * @param casoTeste
 	 */
-	public void validatorHeaders(Response resp, Object headerName, Object baseline){
+	public void validatorHeaders(Object headerName, Object baseline){
 		Log.info("Validação do HEADER - Campo: " + headerName);
 		try {
-			soft.assertTrue(resp.getHeader(headerName.toString()).equals(baseline), "Validação de campos do Header: " + headerName + "</br><b>Valor atual:</b> " + resp.getHeader(headerName.toString()) + "</br><b>Valor esperado:</b> " + baseline);
+			soft.assertTrue(response.getHeader(headerName.toString()).equals(baseline), "Validação de campos do Header: " + headerName + "</br><b>Valor atual:</b> " + response.getHeader(headerName.toString()) + "</br><b>Valor esperado:</b> " + baseline);
 		}catch (Exception e) {
 			soft.assertTrue(false, "Validação de campos do Header: " + headerName);
 		}

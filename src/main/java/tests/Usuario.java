@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Random;
 
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -37,25 +36,26 @@ public class Usuario extends Request {
 	}
 	
 	@Test(groups = { "Fluxo básico" })
-	public void CEN01_cadastroUsuario() {
+	public void CEN01_criacaoUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			post(helper.gerarBodyCadastro().toString(), casoTeste.get("path"));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
 			usuarioId = response.jsonPath().getString("id");
 		}
 	}
 	
 	
 	@Test(groups = { "Fluxo básico" })
-	public void CEN02_recuperarListaPaginadaUsuario() {
+	public void CEN02_recuperarListaUsuariosPorPagina() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			get(casoTeste.get("path"));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
 			id = (HashMap<String, String>) response.jsonPath().getList("data").get(0);
+			validatorBody(casoTeste.get("baseline"));
 		}
 	}
 	
@@ -65,8 +65,9 @@ public class Usuario extends Request {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			get(casoTeste.get("path") + String.valueOf(id.get("id")));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
+			validatorBody(casoTeste.get("baseline"));
 		}
 	}
 	
@@ -76,41 +77,45 @@ public class Usuario extends Request {
 			anexaDescricao(casoTeste.get("CT"));
 			random.nextInt(1000);
 			get(casoTeste.get("path") + String.valueOf(id.get("id"))+random.nextInt(1000));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
+			validatorBodyEmpty(casoTeste.get("baseline"));
 		}
 	}
 	
 	
 	@Test(groups = { "Fluxo básico" })
-	public void CEN05_recuperarListaUsuario() {
+	public void CEN05_recuperarListaResourceUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			get(casoTeste.get("path"));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
 			unknownId = (HashMap<String, String>) response.jsonPath().getList("data").get(0);
+			validatorBody(casoTeste.get("baseline"));
 		}
 	}
 	
 	@Test(groups = { "Fluxo básico" })
-	public void CEN06_recuperarUsuarioPorId() {
+	public void CEN06_recuperarUsuarioResourcePorId() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			get(casoTeste.get("path") + String.valueOf(unknownId.get("id")));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
+			validatorBody(casoTeste.get("baseline"));
 		}
 	}
 	
 	
 	@Test(groups = { "Fluxo básico" })
-	public void CEN07_recuperarUsuarioNaoCadastrado() {
+	public void CEN07_recuperarUsuarioResourceNaoCadastrado() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			get(casoTeste.get("path") + String.valueOf(unknownId.get("id"))+random.nextInt(1000));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
+			validatorBodyEmpty(casoTeste.get("baseline"));
 		}
 	}
 	
@@ -119,18 +124,18 @@ public class Usuario extends Request {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			put(helper.gerarBodyAlteracao().toString(), casoTeste.get("path") + usuarioId + "");
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
 		}
 	}
 	
 	@Test(groups = { "Fluxo básico" })
-	public void CEN09_alteracaoUsuario() {
+	public void CEN09_alteracaoUsuarioPatch() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			patch(helper.gerarBodyAlteracao().toString(), casoTeste.get("path") + usuarioId + "");
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
 		}
 	}
 	
@@ -140,20 +145,20 @@ public class Usuario extends Request {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			post(helper.gerarBodyRegistro().toString(), casoTeste.get("path"));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
 			usuarioId = response.jsonPath().getString("id");
 		}
 	}
 	
 	@Test(groups = { "Fluxo básico" })
-	public void CEN11_registroUsuario() {
+	public void CEN11_registroUsuarioUnsuccessful() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			post(helper.gerarBodyRegistroUnsuccessful().toString(), casoTeste.get("path"));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
-			validatorBody(response, casoTeste.get("baseline"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
+			validatorBody(casoTeste.get("baseline"));
 		}
 	}
 	
@@ -163,8 +168,8 @@ public class Usuario extends Request {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			post(helper.gerarBodyRegistro().toString(), casoTeste.get("path"));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
 		}
 	}
 	
@@ -173,9 +178,9 @@ public class Usuario extends Request {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			post(helper.gerarBodyRegistroUnsuccessful().toString(), casoTeste.get("path"));
-			validatorHeaders(response, "Content-Type", casoTeste.get("contentType"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
-			validatorBody(response, casoTeste.get("baseline"));
+			validatorHeaders("Content-Type", casoTeste.get("contentType"));
+			validatorStatusCode(casoTeste.get("statusCode"));
+			validatorBody(casoTeste.get("baseline"));
 		}
 	}
 	
@@ -185,7 +190,7 @@ public class Usuario extends Request {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			delete(casoTeste.get("path") + usuarioId + "");
-			validatorStatusCode(response, casoTeste.get("statusCode"));
+			validatorStatusCode(casoTeste.get("statusCode"));
 		}
 	}
 	
@@ -194,10 +199,8 @@ public class Usuario extends Request {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
 			get(casoTeste.get("path"));
-			validatorStatusCode(response, casoTeste.get("statusCode"));
-			validatorBody(response, casoTeste.get("baseline"));
+			validatorStatusCode(casoTeste.get("statusCode"));
+			validatorBody(casoTeste.get("baseline"));
 		}
 	}
-
-	
 }
