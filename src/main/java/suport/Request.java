@@ -35,13 +35,13 @@ public class Request {
 	
 	
 	/**
-	 * Envia requisiÃ§Ã£o  POST para host
+	 * Envia requisição  POST para host
 	 * @param json
 	 * @param path
 	 * @return
 	 */
 	public void post(Object json,Object path) {
-		anexaDescricao("Enviando requisiÃ§Ã£o POST para host: <br><b>" + baseUri  +  path.toString() + "</b>");
+		anexaDescricao("Enviando requisição POST para host: <br><b>" + baseUri  +  path.toString() + "</b>");
 		response = given().
 				basePath(path.toString()).
 				body(json).
@@ -50,13 +50,13 @@ public class Request {
 	}
 	
 	/**
-	 * Envia requisiÃ§Ã£o  PUT para host
+	 * Envia requisição  PUT para host
 	 * @param json
 	 * @param path
 	 * @return
 	 */
 	public void put(Object json,String path) {
-		anexaDescricao("Enviando requisiÃ§Ã£o PUT para host: <br><b>" + baseUri  +  path + "</b>");
+		anexaDescricao("Enviando requisição PUT para host: <br><b>" + baseUri  +  path + "</b>");
 		response = given().
 				basePath(path).
 				body(json).
@@ -65,13 +65,13 @@ public class Request {
 	}
 
 	/**
-	 * Envia requisiÃ§Ã£o PATCH para host
+	 * Envia requisição PATCH para host
 	 * @param json
 	 * @param path
 	 * @return
 	 */
 	public void patch(Object json,String path) {
-		anexaDescricao("Enviando requisiÃ§Ã£o PATCH para host: <br><b>" + baseUri  +  path + "</b>");
+		anexaDescricao("Enviando requisição PATCH para host: <br><b>" + baseUri  +  path + "</b>");
 		response = given().
 				basePath(path).
 				body(json).
@@ -79,31 +79,31 @@ public class Request {
 				patch(baseUri + path);
 	}
 	/**
-	 * Envia requisiÃ§Ã£o  GET para host
+	 * Envia requisição  GET para host
 	 * @param path
 	 * @return
 	 */
 	public void get(Object path) {
-		anexaDescricao("Enviando requisiÃ§Ã£o GET para host: <br><b>" + baseUri + path.toString() + "</b>");
+		anexaDescricao("Enviando requisição GET para host: <br><b>" + baseUri + path.toString() + "</b>");
 		response = given().	
 				when().
 				get(baseUri + path.toString());
 	}
 	
 	/**
-	 * Eniva requisiÃ§Ã£o  DELETE para o host
+	 * Eniva requisição  DELETE para o host
 	 * @param path
 	 * @return
 	 */
 	public void delete(String path) {
-		anexaDescricao("Enviando requisiÃ§Ã£o DELETE para host: <br><b>" + baseUri + path + "</b>");
+		anexaDescricao("Enviando requisição DELETE para host: <br><b>" + baseUri + path + "</b>");
 		response = given().
 				when().
 				delete(baseUri + path);
 	}
 
 	/**
-	 * Anexa DescriÃ§Ã£o  no relatÃ³rio
+	 * Anexa Descrição  no relatório
 	 * @param desc
 	 */
 	public void anexaDescricao(Object desc) {
@@ -118,11 +118,11 @@ public class Request {
 	 * @param casoTeste
 	 */
 	public void validatorBody(Response resp, Object baseline){
-		Log.info("ValidaÃ§Ã£o do BODY");
+		Log.info("Validação do BODY");
 		try {
-			soft.assertTrue(resp.getBody().jsonPath().get().toString().equals(baseline.toString()), "ValidaÃ§Ã£o do Body " + "</br><b>Valor atual:</b> " + resp.getBody().jsonPath().get().toString() + "</br><b>Valor esperado:</b> " + baseline.toString());
+			soft.assertTrue(resp.getBody().jsonPath().get().toString().equals(baseline.toString()), "Validação do Body " + "</br><b>Valor atual:</b> " + resp.getBody().jsonPath().get().toString() + "</br><b>Valor esperado:</b> " + baseline.toString());
 		}catch (Exception e) {
-			soft.assertTrue(false, "ValidaÃ§Ã£o do Body");
+			soft.assertTrue(false, "Validação do Body");
 		}
 	}
 	
@@ -133,13 +133,13 @@ public class Request {
 	 * @param casoTeste
 	 */
 	public void validatorBodyEmpty(Response resp, Object baseline) {
-		Log.info("ValidaÃ§Ã£o do BODY");
+		Log.info("Validação do BODY");
 		try {
-			soft.assertTrue(resp.getBody().asString().equals(baseline), "ValidaÃ§Ã£o do body vazio: " +  
+			soft.assertTrue(resp.getBody().asString().equals(baseline), "Validação do body vazio: " +  
 		"</br><b>Valor atual:</b> " + resp.getBody().asString().equals(baseline) + "</br><b>Valor esperado:</b> " + baseline);
 		
 		}catch (Exception e) {
-			soft.assertTrue(false, "ValidaÃ§Ã£o de body vazio: " + resp.getBody().asString());
+			soft.assertTrue(false, "Validação de body vazio: " + resp.getBody().asString());
 		}
 	}
 
@@ -150,11 +150,11 @@ public class Request {
 	 * @param casoTeste
 	 */
 	public void validatorStatusCode(Response resp, Object baseline){
-		Log.info("ValidaÃ§Ã£o do STATUS CODE: " + Integer.valueOf(baseline.toString()));
+		Log.info("Validação do STATUS CODE: " + Integer.valueOf(baseline.toString()));
 		try {
-			soft.assertTrue(resp.getStatusCode() == Integer.valueOf(baseline.toString()), "ValidaÃ§Ã£o do StatusCode " + "</br><b>StatusCode atual:</b> " + resp.getStatusCode() + "</br><b>StatusCode esperado:</b> " + Integer.valueOf(baseline.toString()));
+			soft.assertTrue(resp.getStatusCode() == Integer.valueOf(baseline.toString()), "Validação do StatusCode " + "</br><b>StatusCode atual:</b> " + resp.getStatusCode() + "</br><b>StatusCode esperado:</b> " + Integer.valueOf(baseline.toString()));
 		}catch (Exception e) {
-			soft.assertTrue(false, "ValidaÃ§Ã£o do StatusCode");
+			soft.assertTrue(false, "Validação do StatusCode");
 		}
 	}
 	
@@ -167,11 +167,11 @@ public class Request {
 	 * @param casoTeste
 	 */
 	public void validatorHeaders(Response resp, Object headerName, Object baseline){
-		Log.info("ValidaÃ§Ã£o do HEADER - Campo: " + headerName);
+		Log.info("Validação do HEADER - Campo: " + headerName);
 		try {
-			soft.assertTrue(resp.getHeader(headerName.toString()).equals(baseline), "ValidaÃ§Ã£o de campos do Header: " + headerName + "</br><b>Valor atual:</b> " + resp.getHeader(headerName.toString()) + "</br><b>Valor esperado:</b> " + baseline);
+			soft.assertTrue(resp.getHeader(headerName.toString()).equals(baseline), "Validação de campos do Header: " + headerName + "</br><b>Valor atual:</b> " + resp.getHeader(headerName.toString()) + "</br><b>Valor esperado:</b> " + baseline);
 		}catch (Exception e) {
-			soft.assertTrue(false, "ValidaÃ§Ã£o de campos do Header: " + headerName);
+			soft.assertTrue(false, "Validação de campos do Header: " + headerName);
 		}
 	}
 

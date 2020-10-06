@@ -19,7 +19,7 @@ import uteis.ReportListener;
 
 @Listeners({ ReportListener.class })
 @Epic("Teste de API")
-@Feature("Realiza a consulta, cadastro, alteraÃ§Ã£o e exclusÃ£o de usuario")
+@Feature("Realiza a consulta, cadastro, alteração e exclusão de usuario")
 @Severity(SeverityLevel.TRIVIAL)
 public class Usuario extends Request {
 
@@ -36,7 +36,7 @@ public class Usuario extends Request {
 		setBaseUri("https://reqres.in/api/");
 	}
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN01_cadastroUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -48,7 +48,7 @@ public class Usuario extends Request {
 	}
 	
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN02_recuperarListaPaginadaUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -60,7 +60,7 @@ public class Usuario extends Request {
 	}
 	
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN03_recuperarUsuarioPorId() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -70,7 +70,7 @@ public class Usuario extends Request {
 		}
 	}
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN04_recuperarUsuarioNaoCadastrado() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -82,7 +82,7 @@ public class Usuario extends Request {
 	}
 	
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN05_recuperarListaUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -93,7 +93,7 @@ public class Usuario extends Request {
 		}
 	}
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN06_recuperarUsuarioPorId() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -104,7 +104,7 @@ public class Usuario extends Request {
 	}
 	
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN07_recuperarUsuarioNaoCadastrado() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -114,7 +114,7 @@ public class Usuario extends Request {
 		}
 	}
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN08_alteracaoUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -124,7 +124,7 @@ public class Usuario extends Request {
 		}
 	}
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN09_alteracaoUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -135,7 +135,7 @@ public class Usuario extends Request {
 	}
 	
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN10_registroUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -146,7 +146,7 @@ public class Usuario extends Request {
 		}
 	}
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN11_registroUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -158,7 +158,7 @@ public class Usuario extends Request {
 	}
 	
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN12_realizaLogin() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -168,7 +168,7 @@ public class Usuario extends Request {
 		}
 	}
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN13_realizaLoginUnsuccessful() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -180,7 +180,7 @@ public class Usuario extends Request {
 	}
 	
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN14_excluirUsuario() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
@@ -189,7 +189,7 @@ public class Usuario extends Request {
 		}
 	}
 	
-	@Test(groups = { "Fluxo bÃ¡sico" })
+	@Test(groups = { "Fluxo básico" })
 	public void CEN15_responseDelayed() {
 		for (JsonPath casoTeste : helper.dp.getTestCasesToJsonPath()) {
 			anexaDescricao(casoTeste.get("CT"));
