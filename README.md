@@ -1,4 +1,4 @@
-# Projeto Desafio Inmetrics - API
+# Projeto Desafio GetNet - API
 
 ### 🛠️ Ferramentas
 
