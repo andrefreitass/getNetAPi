@@ -1,0 +1,222 @@
+[
+
+	{
+		"id": "CEN01",
+		"Cenário": "Cadastro de usuário",
+		"casosTestes": [
+			{
+					"CT": "CT01 - Cadastro de usuario",
+					"path":"users",
+					"statusCode":"201",
+					"contentType": "application/json; charset=utf-8"
+			}
+		]
+	},
+	{
+		"id": "CEN02",
+		"Cenário": "Consulta lista paginada de usuário",
+		"casosTestes": [
+			{
+					"CT": "CT02 - Consulta Lista Usuario",
+					"path":"users?page=1",
+					"statusCode":"200",
+					"contentType": "application/json; charset=utf-8"
+			}
+		]
+	},
+	{
+		"id": "CEN03",
+		"Cenário": "Recupera usuário por ID",
+		"casosTestes": [
+			{
+					"CT": "CT03 - Recupera Usuario por ID",
+					"path":"users/",
+					"statusCode":"200",
+					"contentType": "application/json; charset=utf-8"
+					
+			}
+		]
+	},
+	
+		{
+		"id": "CEN04",
+		"Cenário": "Recupera usuário não cadastrado",
+		"casosTestes": [
+			{
+					"CT": "CT04 - Recupera Usuario Nao Cadastrado",
+					"path":"users/",
+					"statusCode":"404",
+					"contentType": "application/json; charset=utf-8"
+					
+			}
+		]
+	},
+	
+	{
+		"id": "CEN05",
+		"Cenário": "Recupera Lista Usuario",
+		"casosTestes": [
+			{
+					"CT": "CT05 - Recupera Lista Usuario",
+					"path":"unknown",
+					"statusCode":"200",
+					"contentType": "application/json; charset=utf-8"
+					
+			}
+		]
+	},
+	
+		{
+		"id": "CEN06",
+		"Cenário": "Recupera Usuario Resource",
+		"casosTestes": [
+			{
+					"CT": "CT06 - Recupera Usuario Resource",
+					"path":"unknown/",
+					"statusCode":"200",
+					"contentType": "application/json; charset=utf-8"
+					
+			}
+		]
+	},
+	
+	{
+		"id": "CEN07",
+		"Cenário": "Recupera usuário não cadastrado",
+		"casosTestes": [
+			{
+					"CT": "CT07 - Recupera Usuario Nao Cadastrado",
+					"path":"unknown/",
+					"statusCode":"404",
+					"contentType": "application/json; charset=utf-8"
+					
+			}
+		]
+	},
+
+	{
+		"id": "CEN08",
+		"Cenário": "Alteração de usuário",
+		"casosTestes": [
+			{
+					"CT": "CT08 - Alteracao de usuario",
+					"path":"users/",
+					"statusCode":"200",
+					"contentType": "application/json; charset=utf-8"
+			}
+		]
+	},
+	
+		{
+		"id": "CEN09",
+		"Cenário": "Alteração de usuário",
+		"casosTestes": [
+			{
+					"CT": "CT09 - Alteracao de usuario",
+					"path":"users/",
+					"statusCode":"200",
+					"contentType": "application/json; charset=utf-8"
+			}
+		]
+	},
+	
+		{
+		"id": "CEN10",
+		"Cenário": "Registro de usuário",
+		"casosTestes": [
+			{
+					"CT": "CT10 - Registro de usuario",
+					"path":"register/",
+					"statusCode":"200",
+					"contentType": "text/html; charset=utf-8"
+			}
+		]
+	},
+			{
+		"id": "CEN11",
+		"Cenário": "Registro de usuário Unsuccessful",
+		"casosTestes": [
+			{
+					"CT": "CT11 - Registro de usuario Unsuccessful",
+					"path":"register/",
+					"statusCode":"400",
+					"contentType": "application/json; charset=utf-8",
+					"baseline":"{error=Missing email or username}"
+			}
+		]
+	},
+	
+	{
+		"id": "CEN12",
+		"Cenário": "Login Sucesso",
+		"casosTestes": [
+			{
+					"CT": "CT12 - Realiza Login",
+					"path":"login",
+					"statusCode":"200",
+					"contentType": "application/json; charset=utf-8"
+			}
+		]
+	},
+	
+		{
+		"id": "CEN13",
+		"Cenário": "Login Unsuccessful",
+		"casosTestes": [
+			{
+					"CT": "CT13 - Realiza Login Unsuccessful",
+					"path":"login",
+					"statusCode":"400",
+					"contentType": "application/json; charset=utf-8",
+				    "baseline":"{error=Missing email or username}"
+					
+			}
+		]
+	},
+	
+
+	{
+		"id": "CEN14",
+		"Cenário": "Excluir Usuario",
+		"casosTestes": [
+			{
+					"CT": "CT14 - Excluir Usuario",
+					"path":"users/",
+					"baseline":"false",
+					"statusCode":"204"
+			}
+		]
+	},
+	
+		{
+		"id": "CEN15",
+		"Cenário": "Response Delayed",
+		"casosTestes": [
+			{
+					"CT": "CT15 - Response Delayed",
+					"path":"users?delay=3",
+					"statusCode":"200",
+					"baseline":"{per_page=6, total=12, ad={company=StatusCode Weekly, text=A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things., url=http://statuscode.org/}, data=[{last_name=Bluth, id=1, avatar=https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg, first_name=George, email=george.bluth@reqres.in}, {last_name=Weaver, id=2, avatar=https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg, first_name=Janet, email=janet.weaver@reqres.in}, {last_name=Wong, id=3, avatar=https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg, first_name=Emma, email=emma.wong@reqres.in}, {last_name=Holt, id=4, avatar=https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg, first_name=Eve, email=eve.holt@reqres.in}, {last_name=Morris, id=5, avatar=https://s3.amazonaws.com/uifaces/faces/twitter/stephenmoon/128.jpg, first_name=Charles, email=charles.morris@reqres.in}, {last_name=Ramos, id=6, avatar=https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg, first_name=Tracey, email=tracey.ramos@reqres.in}], page=1, total_pages=2}"
+			}
+		]
+	},
+
+ 	{
+		"BodyCadastro": {
+			"nome":"automacao teste",
+			"cargo":"analista de automacao"
+		}
+	},
+	{
+		"BodyAlteracao":{
+		"nome":"alteracao automacao teste",
+		"cargo":"alteracao analista de automacao"
+		}
+	},
+	{
+		"BodyRegistro":{
+   		 "email": "eve.holt@reqres.in",
+  	     "senha": "cityslicka"
+		}
+	}
+]
